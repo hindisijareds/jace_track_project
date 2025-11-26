@@ -1,0 +1,103 @@
+ :root {
+      --jace-dark: #003366;
+      --jace-mid:  #0055aa;
+      --bg: #f5f7fa;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    /* Section cards */
+    .form-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border-left: 5px solid var(--jace-dark);
+      transition: transform 0.2s ease;
+    }
+    .form-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Titles */
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+      color: var(--jace-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .title i {
+      color: var(--jace-mid);
+      font-size: 1.3rem;
+    }
+
+    /* Inputs */
+    .form-control, .form-select {
+      border-radius: 8px;
+      border: 1px solid #d0d7e2;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--jace-mid);
+      box-shadow: 0 0 0 0.15rem rgba(0, 85, 170, 0.25);
+    }
+
+    /* Buttons */
+    .btn-jace {
+      background: var(--jace-dark);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 12px 28px;
+      font-size: 1rem;
+    }
+    .btn-jace:hover {
+      background: #002244;
+    }
+
+    .back-btn {
+      border-radius: 8px;
+    }
+
+    /* Responsive spacing */
+    @media (max-width: 576px) {
+      .title {
+        font-size: 1rem;
+      }
+    }
+        #preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #c6e3ff; /* JaceTrack dark blue */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #preloader img {
+      width: 100px;
+      height: auto;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Pulse animation */
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.15); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Hide preloader after load */
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }

@@ -1,0 +1,94 @@
+ :root {
+      --jace-dark: #003366;
+      --jace-mid:  #0055aa;
+      --bg: #f5f7fa;
+    }
+    body {
+      background: var(--bg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* --- topbar --- */
+    .topbar {
+      background:#fff;
+      border-bottom:1px solid rgba(0,0,0,0.06);
+      padding: 10px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+    }
+    .topbar .brand img { height:36px; width:auto; }
+    .topbar .brand h6 { margin:0; font-weight:600; font-size:1rem; color:var(--jace-dark) }
+
+    /* --- desktop sidebar --- */
+    .sidebar {
+      background: var(--jace-dark);
+      color: #fff;
+      min-height: calc(100vh - 60px);
+      padding: 18px 12px;
+      border-right: 1px solid rgba(255,255,255,0.02);
+      position: sticky;
+      top: 60px;
+    }
+    .sidebar .brand {
+      display:flex; gap:10px; align-items:center; margin-bottom:12px;
+    }
+    .sidebar .brand img { height:44px; }
+    .sidebar .nav-link { color: #fff; padding:10px 12px; border-radius:8px; margin:6px 0; }
+    .sidebar .nav-link:hover, .sidebar .nav-link.active { background: var(--jace-mid); color:#fff; }
+
+    /* --- cards & tables --- */
+    .dashboard-card {
+      background:#fff; border-radius:12px; padding:18px;
+      box-shadow:0 6px 20px rgba(12,24,50,0.04); margin-bottom:18px;
+    }
+    .dashboard-title { color:var(--jace-dark); font-weight:600; margin-bottom:8px; }
+
+    /* small-screen adjustments */
+    @media (max-width: 991.98px) {
+      .sidebar { display:none; } /* hide desktop sidebar on small screens (we use offcanvas) */
+    }
+    @media (max-width: 575.98px) {
+      .topbar .brand h6 { font-size:0.95rem; }
+    }
+
+    /* Chart container fixed height but responsive */
+    .chart-wrap { height: 280px; }
+    @media (max-width: 576px) { .chart-wrap { height: 220px; } }
+
+    /* print styles (clean) */
+    @media print {
+      body * { visibility: hidden; }
+      #printable, #printable * { visibility: visible; }
+      #printable { position: absolute; top: 0; left: 0; width: 100%; }
+    }
+     /* Preloader styles */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #c6e3ff; /* JaceTrack dark blue */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #preloader img {
+      width: 100px;
+      height: auto;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Pulse animation */
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.15); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Hide preloader after load */
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
